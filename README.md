@@ -6,12 +6,20 @@ Inspired from the great [jekyll-webpack](https://github.com/allizad/jekyll-webpa
 Development
 -----------
 
-Run: `docker-compose up`. Then browse http://localhost:4000/
+Run:
+
+    run --rm webpack yarn install
+    docker-compose up
+
+Then open http://localhost:4000/
 
 What you get:
 
-- A jekyll static website, with a base template and some inserted content.
-- A jekyll development server that is serving the above upon `docker-compose up`
+- A jekyll static website, with a SCSS-powered [minima](https://github.com/jekyll/minima) theme
+- A ES6/JSX/React javascript environment
+- A compilation of the above down to a single browser-friendly js bundle
+- A seemless integration between the generated bundle and the jekyll website
+- A live regeneration of the page upon code changes
 
 Deployment
 ----------

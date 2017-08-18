@@ -1,9 +1,19 @@
 version: '3'
 services:
-  frontend:
+  jekyll:
     image: jekyll/jekyll:3.5
     volumes:
       - ./jekyll:/srv/jekyll
+      - "webpack-bundle:/srv/bundle"
     command: jekyll serve
     ports:
       - "4000:4000"
+  webpack:
+      image: node:8.1
+      working_dir: /usr/src/app
+      command: yarn run watch
+      volumes:
+          - "./webpack:/usr/src/app"
+          - "webpack-bundle:/usr/src/app/bundle"
+volumes:
+  webpack-bundle:

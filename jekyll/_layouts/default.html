@@ -67,4 +67,8 @@
       </div>
     </footer>
 
+    {% if page.bundle %}
+    <script src="{{ 'assets/bundle/' | append: page.bundle | absolute_url }}"></script>
+    {% endif %}
+
   </body>

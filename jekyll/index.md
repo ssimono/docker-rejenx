@@ -1,5 +1,6 @@
 ---
 layout: default
+bundle: main.js
 ---
 
 Hello, world
