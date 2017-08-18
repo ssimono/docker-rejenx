@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 
 class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = { val: '' };
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(evt) {
@@ -19,7 +19,7 @@ class Demo extends Component {
         <input type="text" value={this.state.val} onChange={this.handleChange} />
         <span> {this.state.val}</span>
       </p>
-    )
+    );
   }
 }
 
