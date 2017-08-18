@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  <head>
+    <title>{{ page.title |default: site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ "/assets/styles/main.css" | absolute_url }}">
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
+  </head>
+
+  <body>
+
+    {% include header.html %}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+      <div class="wrapper">
+        <h2 class="footer-heading">{{ site.title | escape }}</h2>
+
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <ul class="contact-list">
+              <li>
+                {% if site.author %}
+                  {{ site.author | escape }}
+                {% else %}
+                  {{ site.title | escape }}
+                {% endif %}
+                </li>
+                {% if site.email %}
+                <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                {% endif %}
+            </ul>
+          </div>
+
+          <div class="footer-col footer-col-2">
+            <ul class="social-media-list">
+              {% if site.github_username %}
+              <li>
+                  <a href="https://github.com/{{ site.github_username }}"><span class="icon icon--github">{% include icon-github.svg %}</span><span class="username">{{ site.github_username }}</span></a>
+              </li>
+              {% endif %}
+
+              {% if site.twitter_username %}
+              <li>
+                <a href="https://twitter.com/{{ site.twitter_username }}"><span class="icon icon--twitter">{% include icon-twitter.svg %}</span><span class="username">{{ site.twitter_username }}</span></a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+
+          <div class="footer-col footer-col-3">
+            <p>{{ site.description | escape }}</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
