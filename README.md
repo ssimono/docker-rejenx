@@ -20,6 +20,8 @@ What you get:
 - A compilation of your react source down to one or several browser-friendly js bundles
 - A seemless integration between the generated bundle and the jekyll website
 - A live regeneration of the page upon code changes
+- A Makefile target that builds all static files into a production ready directory
+- A production docker-compose environment with a tunable nginx server
 
 Deployment
 ----------

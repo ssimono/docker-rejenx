@@ -1,0 +1,9 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.11.13
+    ports:
+      - "4001:80"
+    volumes:
+      - "./build/deploy:/etc/nginx/conf.d"
+      - "./build/_site:/var/www"
