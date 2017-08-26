@@ -8,8 +8,7 @@ Development
 
 Run:
 
-    docker-compose run --rm webpack yarn install
-    docker-compose up
+    make up
 
 Then open http://localhost:4000/
 
