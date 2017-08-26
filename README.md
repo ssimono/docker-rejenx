@@ -21,6 +21,8 @@ What you get:
 - A live regeneration of the page upon code changes
 - A Makefile target that builds all static files into a production ready directory
 - A production docker-compose environment with a tunable nginx server
+- A little node-js api acting as a placeholder in place of your api
+- A sample React app already wired up with the remote API
 
 Deployment
 ----------

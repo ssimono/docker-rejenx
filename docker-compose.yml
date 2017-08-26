@@ -6,14 +6,30 @@ services:
       - ./jekyll:/srv/jekyll
       - "webpack-bundle:/srv/bundle"
     command: jekyll serve
+    environment:
+      - JEKYLL_ENV=development
     ports:
       - "4000:4000"
   webpack:
       image: node:8.1
       working_dir: /usr/src/app
       command: yarn run watch
+      environment:
+        - NODE_ENV=development
+        - API_URL=http://localhost:4001/api
       volumes:
           - "./webpack:/usr/src/app"
           - "webpack-bundle:/usr/src/app/bundle"
+  api:
+      build: ./api
+      working_dir: /usr/src/app
+      command: node server.js
+      environment:
+        - ENABLE_CORS=1
+      ports:
+        - "4001:4001"
+      volumes:
+          - "./api:/usr/src/app"
+
 volumes:
   webpack-bundle:

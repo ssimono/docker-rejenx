@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+import HttpTracker from './http_tracker';
+
 class Demo extends Component {
   constructor(props) {
     super(props);
-    this.state = { val: '' };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(evt) {
-    this.setState({ val: evt.target.value });
   }
 
   render() {
     return (
-      <p>
-        <input type="text" value={this.state.val} onChange={this.handleChange} />
-        <span> {this.state.val}</span>
-      </p>
+      <HttpTracker api_url={process.env.API_URL} />
     );
   }
 }
