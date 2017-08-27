@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+function renderRequest(request, idx) {
+  let color = 'grey';
+  if (request.error) {
+    color = 'purple';
+  } else if (request.res) {
+    color = request.res.ok ? 'green' : 'red';
+  }
+
+  return (
+    <tr key={(v => v)(idx)}>
+      <td>
+        <i className={`fa fa-circle ${color}`} aria-hidden="true" />&nbsp;
+        {request.res && `${request.res.status}`}
+        {request.error && `${request.error.message}`}
+      </td>
+      <td><strong>{request.req.method}</strong> {request.req.url}</td>
+      <td><code>{request.body}</code></td>
+    </tr>
+  );
+}
+
 export default class HttpTracker extends Component {
   constructor(props) {
     super(props);
@@ -43,8 +64,12 @@ export default class HttpTracker extends Component {
 
     fetch(HttpRequest).then((response) => {
       const requests = [].concat(this.state.requests);
-      requests[currentIndex].res = response;
-      this.setState({ requests });
+
+      response.text().then((body) => {
+        requests[currentIndex].res = response;
+        requests[currentIndex].body = body;
+        this.setState({ requests });
+      });
     }).catch((err) => {
       const requests = [].concat(this.state.requests);
       requests[currentIndex].error = err;
@@ -54,37 +79,50 @@ export default class HttpTracker extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleStartRequest}>
-          <h2>Test access to the API</h2>
-          <select
-            name="method"
-            onChange={this.handleEditRequest}
-            value={this.state.currentRequest.method}
-          >
+      <div className="http-tracker">
+        <h3>Test access to the API</h3>
+        <form onSubmit={this.handleStartRequest} className="ink-form column-group">
+          <div className="control-group">
+            <select
+              name="method"
+              onChange={this.handleEditRequest}
+              value={this.state.currentRequest.method}
+            >
 
-            <option value="GET">GET</option>
-            <option value="POST">POST</option>
-          </select>
-          /<input
-            name="url"
-            onChange={this.handleEditRequest}
-            type="text"
-            value={this.state.currentRequest.url}
-          />
-          <input type="submit" value="OK" />
-        </form>
-        <ul>
-          { this.state.requests.map((request, idx) => (
-            <li key={(v => v)(idx)}>
-              <span>{request.req.method} {request.req.url}</span>
+              <option value="GET">GET</option>
+              <option value="POST">POST</option>
+            </select>
+          </div>
+
+          <div className="control-group api-root">
+            <mark>/</mark>
+          </div>
+
+          <div className="control-group">
+            <div className="control append-button">
               <span>
-                {request.res ? ` - ${request.res.status}` : '...'}
-                {request.error && ` - ${request.error.message}`}
+                <input
+                  name="url"
+                  onChange={this.handleEditRequest}
+                  type="text"
+                  value={this.state.currentRequest.url}
+                />
               </span>
-            </li>
-          ))}
-        </ul>
+              <input type="submit" value="OK" className="ink-button" />
+            </div>
+          </div>
+        </form>
+        <table className="ink-table alternating">
+          <thead>
+            <tr>
+              <td>Status</td>
+              <td>Request</td>
+              <td>Body</td>
+            </tr>
+          </thead>
+          <tbody>{ this.state.requests.map(renderRequest) }</tbody>
+        </table>
+
       </div>
     );
   }

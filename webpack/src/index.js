@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 
 import HttpTracker from './http_tracker';
 
-class Demo extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <HttpTracker api_url={process.env.API_URL} />
-    );
-  }
+function Demo(props) {
+  return (
+    <HttpTracker api_url={props.api_url} />
+  );
 }
 
-render(<Demo />, document.getElementById('main'));
+Demo.propTypes = {
+  api_url: PropTypes.string.isRequired,
+};
+
+render(<Demo api_url={process.env.API_URL} />, document.getElementById('main'));
