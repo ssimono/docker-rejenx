@@ -11,3 +11,7 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+
+# Settings from environment:
+# All env variables prefixed with 'JKL__' will be resolved to another configuration
+# See ./_plugins/environment_variables.rb
