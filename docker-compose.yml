@@ -23,8 +23,6 @@ services:
           - "webpack-bundle:/usr/src/app/bundle"
   api:
       build: ./api
-      working_dir: /usr/src/app
-      command: node server.js
       environment:
         - ENABLE_CORS=1
       ports:
