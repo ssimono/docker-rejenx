@@ -1,4 +1,4 @@
-.PHONY: up
+.PHONY: up, clean
 
 all:
 	mkdir -p build
@@ -6,6 +6,7 @@ all:
 	docker-compose run --rm webpack yarn run lint
 	docker-compose run --rm webpack yarn run build
 	docker-compose run --rm jekyll jekyll build
+	docker-compose build api
 	cp -r jekyll/_site build/
 	mv build/_site/deploy build/
 

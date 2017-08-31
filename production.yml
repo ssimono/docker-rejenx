@@ -3,7 +3,11 @@ services:
   nginx:
     image: nginx:1.11.13
     ports:
-      - "4001:80"
+      - "4002:80"
     volumes:
       - "./build/deploy:/etc/nginx/conf.d"
       - "./build/_site:/var/www"
+    env_file: production.env
+  api:
+    image: dockerregenx_api:latest
+    env_file: production.env
