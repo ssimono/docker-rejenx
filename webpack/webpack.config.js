@@ -1,5 +1,20 @@
 const webpack = require('webpack')
 
+// Settings from environment:
+// All build-time env variables prefixed with 'WPK__' will be available
+// in process.env in the bundled code, without the prefix.
+
+const envPrefix = 'WPK__'
+const environment = Object.keys(process.env)
+  .filter(env => env.indexOf(envPrefix) === 0)
+  .reduce(
+    (aggr, env) => Object.assign(
+      aggr,
+      { [env.replace(envPrefix, '')]: JSON.stringify(process.env[env]) }
+    ),
+    { 'NODE_ENV': JSON.stringify(process.env.NODE_ENV) }
+  )
+
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -20,10 +35,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'API_URL': JSON.stringify(process.env.API_URL),
-      }
+      'process.env': environment
     }),
   ]
 };

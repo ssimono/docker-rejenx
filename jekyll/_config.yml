@@ -16,4 +16,5 @@ markdown: kramdown
 
 # Settings from environment:
 # All env variables prefixed with 'JKL__' will be resolved to another configuration
-# See ./_plugins/environment_variables.rb
+# e.g JKL__baseurl=/subpath will have the same effect
+# as if 'baseurl: /subpath' was appended to this file
