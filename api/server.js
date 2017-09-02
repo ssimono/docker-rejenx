@@ -11,7 +11,6 @@ http.createServer((req, res) => {
   process.stdout.write(`[${now.toISOString()}] ${route}\n`)
 
   setTimeout(() => {
-    res.statusCode = [200, 500][rnd % 2]
     if (process.env.ENABLE_CORS) {
       res.setHeader('Access-Control-Allow-Origin', '*')
     }
