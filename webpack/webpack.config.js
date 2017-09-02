@@ -15,6 +15,16 @@ const environment = Object.keys(process.env)
     { 'NODE_ENV': JSON.stringify(process.env.NODE_ENV) }
   )
 
+let plugins = [
+  new webpack.DefinePlugin({
+    'process.env': environment
+  })
+];
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -33,9 +43,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': environment
-    }),
-  ]
+  plugins: plugins,
 };
