@@ -1,22 +1,37 @@
-.PHONY: up, clean
+DEPS := webpack/node_modules
 
-all:
+# Shortcut commands
+jekyll := docker-compose run --rm jekyll jekyll
+yarn   := docker-compose run --rm webpack yarn
+
+all: build
+
+build:
+	# Generate build folder for static assets
 	mkdir -p build
-	docker-compose run --rm webpack yarn install
-	docker-compose run --rm webpack yarn run lint
-	docker-compose run --rm webpack yarn run build
-	docker-compose run --rm jekyll jekyll build
-	docker-compose build api
+	$(yarn) install --frozen-lockfile
+	$(yarn) run build
+	$(jekyll) build
 	cp -r jekyll/_site build/
 	mv build/_site/deploy build/
 
-up: webpack/node_modules
+	# Build Docker image for api
+	docker-compose build api
+
+$(DEPS):
+	$(yarn) install
+
+# Management shortcuts
+.PHONY: up check clean
+
+up: $(DEPS)
 	docker-compose up
 
-webpack/node_modules:
-	docker-compose run --rm webpack yarn install
+check: $(DEPS)
+	$(yarn) run lint
+	$(yarn) run test
 
 clean:
 	rm -rf build
-	docker-compose run --rm jekyll rm -rf _site
-	docker-compose run --rm webpack rm -rf node_modules
+	docker-compose run --rm jekyll rm -rf _site .sass-cache
+	docker-compose run --rm webpack rm -rf node_modules bundle

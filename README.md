@@ -43,8 +43,8 @@ Deployment
 
 The first thing to do is to build a production ready build that contains all static assets cooked by Jekyll and Webpack:
 
-- Provide all necessary settings in an *.env* file. `cp production.env.sample production.env` for a working example.
-- Set the *env_file* env variable: `export ENV_FILE=production.env`
+- Provide all necessary settings in an *.env* file: `cp production.env.sample production.env`.
+- Set the *env_file* environment variable: `export ENV_FILE=production.env`
 - Run `make`
 
 This will create the build in a *build* folder, and will also build the Docker image for the API (e.g the "running" piece of your stack).
@@ -52,7 +52,7 @@ This will create the build in a *build* folder, and will also build the Docker i
 The way you will then deploy strongly depends on your pipeline, hosting and infrastructure. But it could be summarized with those three steps:
 
 - Move your static build to a place where it can be served.
-- Push your running services images to a Docker registry.
+- Push your running services images (*api* in our case) to a Docker registry.
 - Run your containers using the latest version from the Docker registry, with a configuration correctly set via environment variables.
 
 To see it live, just use the sample "stack", after you made the build: `docker-compose -f production.yml up`. It will spawn Nginx and the sample node api, and mount the static build so it can be served. Open http://localhost:4002 to see it live!
