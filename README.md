@@ -22,18 +22,19 @@ Then open http://localhost:4000/
 What you get:
 
 - A [Jekyll][1] static website with an [Ink][2] scaffhold theme and [Font-awesome][3] setup
-- A [React][3]/ES6/JSX [Airbnb linted][4] javascript environment
+- A [React][3]/ES6/JSX [Airbnb linted][4] and [jest tested][4.1] javascript environment
 - A seemless integration between the generated [Webpack][5] bundle and the Jekyll website
 - A Makefile target that builds all static files into a production ready directory
 - A working sample production docker-compose file with a tunable [NGINX][6] server
 - A little *nodejs* api acting as a placeholder for your api
 - A sample React app already wired up with the remote API
-- A simple way to add Jekyll settings and react constants from build-time env variables
+- A simple way to add Jekyll settings and Webpack constants from build-time env variables
 
 [1]: https://jekyllrb.com/
 [2]: http://ink.sapo.pt/
 [3]: http://fontawesome.io/
 [4]: https://github.com/airbnb/javascript
+[4.1]: https://facebook.github.io/jest/
 [5]: https://webpack.github.io/
 [6]: http://nginx.org/
 

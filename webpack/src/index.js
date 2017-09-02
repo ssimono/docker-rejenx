@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 
-import HttpTracker from './http_tracker';
+import HttpTrackerContainer from './components/http_tracker';
 
 function Demo(props) {
   return (
-    <HttpTracker api_url={props.api_url} />
+    <HttpTrackerContainer api_url={props.api_url} />
   );
 }
 

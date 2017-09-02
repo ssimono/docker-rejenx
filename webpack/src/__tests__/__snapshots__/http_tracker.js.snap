@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders as expected 1`] = `
+<div
+  className="http-tracker"
+>
+  <h3>
+    Test access to the API
+  </h3>
+  <form
+    className="ink-form column-group"
+    onSubmit={[Function]}
+  >
+    <div
+      className="control-group"
+    >
+      <select
+        name="method"
+        onChange={[Function]}
+        value="POST"
+      >
+        <option
+          value="GET"
+        >
+          GET
+        </option>
+        <option
+          value="POST"
+        >
+          POST
+        </option>
+      </select>
+    </div>
+    <div
+      className="control-group api-root"
+    >
+      <mark>
+        /
+      </mark>
+    </div>
+    <div
+      className="control-group"
+    >
+      <div
+        className="control append-button"
+      >
+        <span>
+          <input
+            name="url"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </span>
+        <input
+          className="ink-button"
+          type="submit"
+          value="OK"
+        />
+      </div>
+    </div>
+  </form>
+  <table
+    className="ink-table alternating"
+  >
+    <thead>
+      <tr>
+        <td>
+          Status
+        </td>
+        <td>
+          Request
+        </td>
+        <td>
+          Body
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <i
+            aria-hidden="true"
+            className="fa fa-circle grey"
+          />
+           
+        </td>
+        <td>
+          <strong>
+            GET
+          </strong>
+           
+          https://www.google.com/lol
+        </td>
+        <td>
+          <code />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <i
+            aria-hidden="true"
+            className="fa fa-circle red"
+          />
+           
+          undefined
+        </td>
+        <td>
+          <strong>
+            GET
+          </strong>
+           
+          https://www.google.com/lol
+        </td>
+        <td>
+          <code />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <i
+            aria-hidden="true"
+            className="fa fa-circle purple"
+          />
+           
+          Something went wrong!!
+        </td>
+        <td>
+          <strong>
+            GET
+          </strong>
+           
+          https://www.google.com/lol
+        </td>
+        <td>
+          <code />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
