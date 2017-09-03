@@ -107,7 +107,7 @@ exports[`renders as expected 1`] = `
         </td>
         <td>
           <strong>
-            GET
+            POST
           </strong>
            
           https://www.google.com/lol

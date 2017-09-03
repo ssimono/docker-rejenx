@@ -34,6 +34,7 @@ up: $(DEPS)
 check: $(DEPS)
 	$(yarn) run lint
 	$(yarn) run test
+	$(jekyll) doctor
 
 clean:
 	rm -rf build

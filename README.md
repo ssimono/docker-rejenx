@@ -23,7 +23,7 @@ Then open http://localhost:4000/
 What you get:
 
 - A [Jekyll][1] static website with an [Ink][2] scaffhold theme and [Font-awesome][3] setup
-- A [React][3]/ES6/JSX [Airbnb linted][4] and [jest tested][4.1] javascript environment
+- A [React][3.1]/ES6/JSX [Airbnb linted][4] and [jest tested][4.1] javascript environment
 - A seemless integration between the generated [Webpack][5] bundle and the Jekyll website
 - A Makefile target that builds all static files into a production ready directory
 - A working sample production docker-compose file with a tunable [NGINX][6] server
@@ -34,6 +34,7 @@ What you get:
 [1]: https://jekyllrb.com/
 [2]: http://ink.sapo.pt/
 [3]: http://fontawesome.io/
+[3.1]: https://facebook.github.io/react/
 [4]: https://github.com/airbnb/javascript
 [4.1]: https://facebook.github.io/jest/
 [5]: https://webpack.github.io/
@@ -63,5 +64,5 @@ Tunning
 
 This is just an abstract starting kit, so it is basically meant to be tuned by forking and then starting working on your project. If you have a different stack of technologies that you often use, you should first fork it to your own starting kit, adapt it to your needs (you might prefer [Bootstrap][10] over Ink, [Vuejs][11] over React...), and then fork your fork (yeah!) when you start a project.
 
-[10]: (http://getbootstrap.com/)
-[11]: (https://vuejs.org/)
+[10]: http://getbootstrap.com/
+[11]: https://vuejs.org/

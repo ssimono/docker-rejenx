@@ -13,7 +13,7 @@ it('renders as expected', () => {
   };
 
   const call2 = {
-    req: new Request('https://www.google.com/lol', 'POST'),
+    req: new Request('https://www.google.com/lol', { method: 'POST' }),
     res: new Response(),
   };
 
