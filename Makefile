@@ -37,5 +37,7 @@ check: $(DEPS)
 
 clean:
 	rm -rf build
+	docker-compose stop
 	docker-compose run --rm jekyll rm -rf _site .sass-cache
-	docker-compose run --rm webpack rm -rf node_modules bundle
+	docker-compose run --rm webpack rm -rf node_modules bundle/*
+	docker-compose down -v --remove-orphans
