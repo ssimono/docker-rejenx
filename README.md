@@ -5,17 +5,18 @@ Opinionated starting-kit for a Jekyll + React + REST API web app, all running wi
 
 Inspired from the great [jekyll-webpack](https://github.com/allizad/jekyll-webpack). But dockerized, nginxed, development ready and deployment ready.
 
-Development
------------
+Requirements
+------------
 
-Make sure that you have:
+- docker >= 1.13.0
+- docker-compose >= 1.6
 
-- docker
-- docker-compose
+Getting started
+---------------
 
-Run:
-
-    make up
+    git clone https://github.com/ssimono/docker-rejenx myapp
+    cd myapp/
+    make up # first run will take some time
 
 Then open http://localhost:4000/
 
@@ -27,7 +28,7 @@ What you get:
 - A Makefile target that builds all static files into a production ready directory
 - A working sample production docker-compose file with a tunable [NGINX][6] server
 - A little *nodejs* api acting as a placeholder for your api
-- A sample React app already wired up with the remote API
+- A sample React app already wired up with the remote REST API
 - A simple way to add Jekyll settings and Webpack constants from build-time env variables
 
 [1]: https://jekyllrb.com/
