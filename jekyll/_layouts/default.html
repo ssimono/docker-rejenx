@@ -63,11 +63,8 @@
             <div class="top-menu">
                 <nav class="ink-navigation ink-grid">
                     <ul class="menu horizontal black">
-                        <li class="active"><a href="#">item</a></li>
-                        <li><a href="#">item</a></li>
-                        <li><a href="#">item</a></li>
-                        <li><a href="#">item</a></li>
-                        <li><a href="#">item</a></li>
+                        <li><a href="{{ site.baseurl }}{% link index.md %}">Home</a></li>
+                        <li><a href="{{ site.baseurl }}{% link about.md %}">About</a></li>
                     </ul>
                 </nav>
             </div>
@@ -81,13 +78,23 @@
         <footer class="clearfix">
             <div class="ink-grid">
                 <ul class="unstyled inline half-vertical-space">
-                    <li class="active"><a href="#">About</a></li>
-                    <li><a href="#">Sitemap</a></li>
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="{{ site.baseurl }}{% link about.md %}">About</a></li>
                 </ul>
                 <p class="note">{{ site.description}} <em>Copyright {{ site.time|date: '%Y' }} Your org.</em></p>
             </div>
         </footer>
+
+        <script>
+          // Add the active style to the current top-menu link
+          (function() {
+            var links = document.querySelectorAll('.top-menu a');
+            links.forEach(function(link) {
+              if (link.getAttribute('href') === window.location.pathname) {
+                link.parentElement.classList.add('active');
+              }
+            });
+          })()
+        </script>
 
         {% if site.ink.load_js %}
           <!-- load Ink's javascript files from the cdn -->

@@ -1,4 +1,4 @@
-DEPS := webpack/node_modules
+DEPS := webpack/node_modules jekyll/about.md
 
 # Shortcut commands
 jekyll := docker-compose run --rm jekyll jekyll
@@ -18,8 +18,12 @@ build:
 	# Build Docker image for api
 	docker-compose build api
 
-$(DEPS):
+webpack/node_modules:
 	$(yarn) install
+
+jekyll/about.md: README.md
+	echo "---\ntitle: About\nlayout: default\n---\n\n" > jekyll/about.md
+	cat README.md >> jekyll/about.md
 
 # Management shortcuts
 .PHONY: up check clean
